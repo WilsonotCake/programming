@@ -6,52 +6,84 @@
     <title>Comics Shop - Home</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="info.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Comics Shop</h1>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="cart.html">Cart</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <h1><i class="fas fa-book-open"></i> Comics Shop</h1>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <section class="comics-list">
-            <div class="comic-item" style="background-image: url('img/comic1.jpg');">
-                <h2>Comic 1</h2>
-                <p data-price="200">Price: 200 UAH</p>
-                <button type="button" class="button add-to-cart">
-                    <span class="button__text">Add to Cart</span>
-                    <span class="button__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                            <line y2="19" y1="5" x2="12" x1="12"></line>
-                            <line y2="12" y1="12" x2="19" x1="5"></line>
-                        </svg>
-                    </span>
-                </button>
+            <div class="section-title">
+                <h2>Featured Comics</h2>
+                <p class="subtitle">Discover our latest collection</p>
             </div>
-            <div class="comic-item" style="background-image: url('img/comic2.jpg');">
-                <h2>Comic 2</h2>
-                <p data-price="300">Price: 300 UAH</p>
-                <button type="button" class="button add-to-cart">
-                    <span class="button__text">Add to Cart</span>
-                    <span class="button__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
-                            <line y2="19" y1="5" x2="12" x1="12"></line>
-                            <line y2="12" y1="12" x2="19" x1="5"></line>
-                        </svg>
-                    </span>
-                </button>
+            
+            <div class="comics-grid">
+                <div class="comic-item" style="background-image: url('img/comic1.jpg');">
+                    <div class="comic-content">
+                        <h2>Comic 1</h2>
+                        <p data-price="200"><span class="price-label">Price:</span> <span class="price-value">200 UAH</span></p>
+                        <button type="button" class="button add-to-cart">
+                            <span class="button__text">Add to Cart</span>
+                            <span class="button__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="comic-item" style="background-image: url('img/comic2.jpg');">
+                    <div class="comic-content">
+                        <h2>Comic 2</h2>
+                        <p data-price="300"><span class="price-label">Price:</span> <span class="price-value">300 UAH</span></p>
+                        <button type="button" class="button add-to-cart">
+                            <span class="button__text">Add to Cart</span>
+                            <span class="button__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="cart">
-            <h2>Your Cart</h2>
-            <ul class="cart-items"></ul>
-            <p class="total">Total: <span id="total-price">0</span> UAH</p>
-            <button id="clear-cart" class="button">Clear Cart</button>
+            <div class="section-title">
+                <h2><i class="fas fa-shopping-basket"></i> Your Cart</h2>
+                <p class="subtitle">Review your selected items</p>
+            </div>
+            <div class="cart-container">
+                <ul class="cart-items"></ul>
+                <div class="cart-summary">
+                    <p class="total">Total: <span id="total-price">0</span> UAH</p>
+                    <button id="clear-cart" class="button">
+                        <span class="button__text">Clear Cart</span>
+                        <span class="button__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                                <line y2="19" y1="5" x2="12" x1="12"></line>
+                                <line y2="12" y1="12" x2="19" x1="5"></line>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
         </section>
     </main>
+    <footer>
+        <p>&copy; 2025 Comics Shop. All rights reserved.</p>
+    </footer>
 </body>
 </html>
