@@ -1,0 +1,9 @@
+{
+  "id": "claude-sonnet-preview",
+  "name": "Enable Claude 3.5 Sonnet (Preview)",
+  "description": "Enables Claude 3.5 Sonnet model access for all clients",
+  "enabled": true,
+  "defaultValue": true,
+  "clientOverrides": [],
+  "lastModified": "2024-03-19T00:00:00Z"
+}

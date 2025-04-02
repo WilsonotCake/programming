@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comics Shop - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="info.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Comics Shop</h1>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="comics-list">
+            <div class="comic-item" style="background-image: url('img/comic1.jpg');">
+                <h2>Comic 1</h2>
+                <p data-price="200">Price: 200 UAH</p>
+                <button type="button" class="button add-to-cart">
+                    <span class="button__text">Add to Cart</span>
+                    <span class="button__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                            <line y2="19" y1="5" x2="12" x1="12"></line>
+                            <line y2="12" y1="12" x2="19" x1="5"></line>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div class="comic-item" style="background-image: url('img/comic2.jpg');">
+                <h2>Comic 2</h2>
+                <p data-price="300">Price: 300 UAH</p>
+                <button type="button" class="button add-to-cart">
+                    <span class="button__text">Add to Cart</span>
+                    <span class="button__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                            <line y2="19" y1="5" x2="12" x1="12"></line>
+                            <line y2="12" y1="12" x2="19" x1="5"></line>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </section>
+        <section class="cart">
+            <h2>Your Cart</h2>
+            <ul class="cart-items"></ul>
+            <p class="total">Total: <span id="total-price">0</span> UAH</p>
+            <button id="clear-cart" class="button">Clear Cart</button>
+        </section>
+    </main>
+</body>
+</html>

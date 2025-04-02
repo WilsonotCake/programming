@@ -1,0 +1,240 @@
+/* Загальний стиль */
+/* Підключення шрифту Boldonse у форматі TTF */
+@font-face {
+    font-family: 'Boldonse';
+    src: url('fonts/Boldonse-Regular.ttf') format('truetype'); /* Підключення TTF */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Boldonse', Arial, sans-serif; /* Використання шрифту Boldonse */
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0; /* Світло-сірий фон */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок */
+header {
+    background-color: #444;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Навігаційне меню */
+.nav-menu {
+    position: absolute;
+    top: 30px; /* Збільшено відступ зверху */
+    right: 20px; /* Відступ справа */
+    display: flex;
+    gap: 10px; /* Відстань між кнопками */
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-menu li {
+    display: inline;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px; /* Внутрішні відступи */
+    background-color: #3a3a3a; /* Темно-сірий колір для виділення */
+    border-radius: 4px; /* Закруглені кути */
+    border: 2px solid #494949; /* Рамка */
+    transition: background-color 0.3s, border-color 0.3s;
+    line-height: 1; /* Вирівнювання тексту по центру */
+}
+
+.nav-menu a.active {
+    background-color: #666; /* Виділення активної сторінки */
+    border-color: #888;
+}
+
+.nav-menu a:hover {
+    background-color: #666; /* Світліший сірий при наведенні */
+    border-color: #888; /* Зміна кольору рамки при наведенні */
+}
+
+/* Секції */
+main {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comics-list, .cart {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Вирівнювання списку коміксів */
+.comics-list {
+    display: flex;
+    flex-direction: column; /* Вертикальне вирівнювання елементів */
+    align-items: center;
+    gap: 1rem; /* Відстань між елементами */
+}
+
+/* Стиль для елементів коміксів */
+.comic-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-size: contain; /* Масштабування зображення без обрізання */
+    background-position: center; /* Центрування зображення */
+    background-repeat: no-repeat; /* Заборона повторення зображення */
+    display: flex;
+    flex-direction: column; /* Вертикальне вирівнювання елементів */
+    align-items: center;
+    color: white; /* Білий текст для контрасту */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Тінь для тексту */
+    height: 400px; /* Фіксована висота для елементів */
+    width: 300px; /* Фіксована ширина для елементів */
+    justify-content: flex-end; /* Текст і кнопка внизу */
+    overflow: hidden; /* Запобігання виходу зображення за межі */
+    background-color: #333; /* Додатковий фон для контрасту */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь для елементів */
+}
+
+/* Кнопка */
+.button {
+    position: relative;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    border: 1px solid #252525;
+    background-color: #494949;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.button .button__text {
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+    z-index: 1;
+    transition: color 0.3s;
+}
+
+.button .button__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 40px;
+    background-color: #34974d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease-in-out;
+}
+
+.button .svg {
+    width: 20px;
+    stroke: #fff;
+}
+
+.button:hover {
+    background: #494949;
+}
+
+.button:hover .button__text {
+    color: transparent; /* Текст зникає під час наведення */
+}
+
+.button:hover .button__icon {
+    width: 100%; /* Іконка розширюється на всю кнопку */
+}
+
+.button:active .button__icon {
+    background-color: #252525;
+}
+
+.button:active {
+    border: 1px solid #252525;
+}
+
+/* Кошик */
+.cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.cart-items li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.cart-btn {
+    padding: 2px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+}
+
+.cart-btn:hover {
+    background: #f0f0f0;
+}
+
+.add-one {
+    color: green;
+}
+
+.remove-one {
+    color: orange;
+}
+
+.delete-item {
+    color: red;
+}
+
+#clear-cart {
+    margin-top: 20px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#clear-cart:hover {
+    background: #ff0000;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 1rem;
+}
