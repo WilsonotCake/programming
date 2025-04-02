@@ -7,6 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalPriceElement = document.getElementById('total-price');
     const clearCartButton = document.getElementById('clear-cart');
     const comicItems = document.querySelectorAll('.comic-item');
+    const themeSwitch = document.getElementById('checkbox');
+    
+    // Theme switcher functionality
+    // Check for saved theme preference or use browser preference
+    const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    // Set initial theme
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeSwitch.checked = true;
+    }
+    
+    // Theme switch event listener
+    themeSwitch.addEventListener('change', switchTheme);
+    
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            showNotification('Dark theme activated!', 'info');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            showNotification('Light theme activated!', 'info');
+        }
+    }
     
     // Add hover effects to comic items
     comicItems.forEach(item => {
