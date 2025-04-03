@@ -200,6 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
             max-width: 300px;
         }
         
+        [data-theme="dark"] .notification {
+            background: #333;
+            color: #edf2f4;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
         .notification.show {
             transform: translateX(0);
         }
