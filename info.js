@@ -1,25 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize cart storage
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || {};
     
-    // DOM elements
     const cartList = document.querySelector('.cart-items');
     const totalPriceElement = document.getElementById('total-price');
     const clearCartButton = document.getElementById('clear-cart');
     const comicItems = document.querySelectorAll('.comic-item');
     const themeSwitch = document.getElementById('checkbox');
     
-    // Theme switcher functionality
-    // Check for saved theme preference or use browser preference
     const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Set initial theme
     if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         themeSwitch.checked = true;
     }
     
-    // Theme switch event listener
     themeSwitch.addEventListener('change', switchTheme);
     
     function switchTheme(e) {
@@ -34,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Add hover effects to comic items
     comicItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
             item.style.transform = 'translateY(-8px)';
@@ -47,14 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add to cart button event listeners
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', () => {
             const comicItem = button.closest('.comic-item');
             const comicName = comicItem.querySelector('h2').textContent;
             const comicPrice = parseInt(comicItem.querySelector('p').dataset.price);
             
-            // Add animation to the button
             button.classList.add('clicked');
             setTimeout(() => {
                 button.classList.remove('clicked');
@@ -64,18 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartItems[comicName].quantity++;
             } else {
                 cartItems[comicName] = { price: comicPrice, quantity: 1 };
-                
-                // Show notification
                 showNotification(`${comicName} added to cart!`);
             }
             
-            // Update cart and save to localStorage
             updateCart();
             saveCart();
         });
     });
 
-    // Clear cart event listener
     clearCartButton.addEventListener('click', () => {
         if (Object.keys(cartItems).length === 0) {
             showNotification('Your cart is already empty!', 'info');
@@ -88,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showNotification('Cart cleared!', 'warning');
     });
 
-    // Function to update cart UI
     function updateCart() {
         cartList.innerHTML = '';
         let total = 0;
@@ -104,34 +90,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 const itemTotal = item.price * item.quantity;
                 li.innerHTML = `
                     <span class="item-name">${name}</span>
-                    <span class="item-quantity">x ${item.quantity}</span>
+                    <span class="item-quantity">x${item.quantity}</span>
                     <span class="item-price">${itemTotal} UAH</span>
                     <div class="item-actions">
-                        <button class="cart-btn add-one" data-name="${name}"></button>
-                        <button class="cart-btn remove-one" data-name="${name}"></button>
-                        <button class="cart-btn delete-item" data-name="${name}"></button>
+                        <button class="add-one" data-name="${name}">+</button>
+                        <button class="remove-one" data-name="${name}">-</button>
+                        <button class="delete-item" data-name="${name}">🗑️</button>
                     </div>
                 `;
                 cartList.appendChild(li);
                 total += itemTotal;
-
-                // Add event listeners for the new buttons
+                
                 li.querySelector('.add-one').addEventListener('click', () => {
                     cartItems[name].quantity++;
                     updateCart();
                     saveCart();
+                    showNotification(`Added one more ${name}!`, 'success');
                 });
-
+                
                 li.querySelector('.remove-one').addEventListener('click', () => {
                     if (cartItems[name].quantity > 1) {
                         cartItems[name].quantity--;
+                        updateCart();
+                        saveCart();
+                        showNotification(`Removed one ${name}!`, 'warning');
                     } else {
                         delete cartItems[name];
+                        updateCart();
+                        saveCart();
+                        showNotification(`${name} removed from cart!`, 'warning');
                     }
-                    updateCart();
-                    saveCart();
                 });
-
+                
                 li.querySelector('.delete-item').addEventListener('click', () => {
                     delete cartItems[name];
                     updateCart();
@@ -143,19 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         totalPriceElement.textContent = total;
         
-        // Animate total price change
         totalPriceElement.classList.add('highlight');
         setTimeout(() => {
             totalPriceElement.classList.remove('highlight');
         }, 500);
     }
     
-    // Function to save cart to localStorage
     function saveCart() {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }
     
-    // Function to show notifications
     function showNotification(message, type = 'success') {
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
@@ -180,10 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
     
-    // Initialize the cart on page load
     updateCart();
     
-    // Add CSS for notifications and animations
     const style = document.createElement('style');
     style.textContent = `
         .notification {
